@@ -1,84 +1,130 @@
 
-from ben_py_utils.misc.
+
+import geopandas as gpd
+
+
 from ben_py_utils.misc.cache import Cache_wrapper
-from ben_py_utils.misc.constants import DATA_DIR
+from ben_py_utils.misc.cache import Cache_wrapper
+from ben_py_utils.misc.download_zip import download_zip_shp
 
 # Cartographic is very precise (hence very heavy) whereas digital is coarser and faster to retrieve and process
 USE_CARTOGRAPHIC = False
 
-@Cache_wrapper(path_cache=join(DATA_DIR, "canada_water.geojson"))
-def download_water():
-    ## Download lakes and riers
-    url_water_lakes_rivers="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/files-fichiers/ghy_000c11a_e.zip"
-    shp_rivers = download_zip_shp(url_water_lakes_rivers) 
-    shp_rivers = shp_rivers.to_crs(4326)
+@Cache_wrapper(path_cache=join(DATA_DIR, "canada_water.parquet"))
+def download_water(year=2011, new_crs=None):
+    
+    # Download lakes and riers
+    if year == 2011:
+        url_water_lakes_rivers="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/files-fichiers/ghy_000c11a_e.zip"
+        shp_rivers = download_zip_shp(url_water_lakes_rivers) 
+    else:
+        raise ValueError(f"Fatal error - inputed {year}, but only 2011 implemented")
+
+    # Transform
+    if new_crs is not None:
+        shp_rivers = shp_rivers.to_crs(new_crs)
 
     return shp_rivers
     
 
+def download_qc_das(year : int = 2016,
+                    pr_code:str = '24',             
+                    path_cache_root: str=DATA_DIR,
+                    use_cartographic:bool = USE_CARTOGRAPHIC,
+                    new_crs=None)  -> gpd.GeoDataFrame:
+                        
+    @Cache_wrapper(path_cache=join(path_cache_root,f"qc_das_{year}_{pr_code}.parquet"))
+    def download_qc_das_wrappee(year,
+                                pr_code,
+                                use_cartographic,
+                                data_download_path ,
+                                new_crs)  :
+        """
+        download_qc_das Read in the 2021 dissemination areas (DAs) for Province of Quebec
 
-@Cache_wrapper(path_cache=join(DATA_DIR,"qc_das.geojson"))
-def download_qc_das(use_cartographic:bool = USE_CARTOGRAPHIC,
-                    data_download_path  :str = DATA_DIR )  -> gpd.GeoDataFrame:
-    """
-    download_qc_das Read in the 2021 dissemination areas (DAs) for Province of Quebec
+        Args:
+            use_cartographic (bool): _description_
 
-    Args:
-        use_cartographic (bool): _description_
+        Returns:
+            gpd.GeoDataFrame: _description_
+        """
 
-    Returns:
-        gpd.GeoDataFrame: _description_
-    """
+        logger.info(f"Saving data to {data_download_path}")
 
-    logger.info(f"Saving data to {data_download_path}")
-
-    zip_download_url = "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/lda_000b21a_e.zip" \
-    if use_cartographic \
-    else "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/lda_000a21a_e.zip"
-
-    shp_das_all = download_zip_shp(zip_download_url,data_download_path).\
-        to_crs(4326)
-
-    shp_qc = download_qc_boundary(use_cartographic,data_download_path).\
-        to_crs(4326)
-
- 
-    num_qc_das= np.sum(shp_das_all.DAUID.str[:2] == "24")
-
-    shp_das_qc = gpd.sjoin(shp_das_all, shp_qc, how="inner", op="within" )
-
-    assert num_qc_das == shp_das_qc.shape[0], f"Error, there are {shp_das_qc.shape[0]} DAs found by spatial join but {num_qc_das} based on DAUID filtering"
-
-    print(f"There are {shp_das_qc.shape[0]} features/das in Quebec for the 2021 census")
-
-    return shp_das_qc
-
-@Cache_wrapper(path_cache=join(DATA_DIR,"qc_fsa_2016.geojson"))
-def download_qc_fsas_2016(use_cartographic:bool = USE_CARTOGRAPHIC,
-                          data_download_path  :str = DATA_DIR ) -> gpd.GeoDataFrame:
-    """
-    download_qc_boundary Read the 2016 FSAs for the province of Quebec
-
-    Args:
-        use_cartographic (bool): _description_
-
-    Returns:
-        _type_: _description_
-    """
-    zip_download_url = "https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/files-fichiers/2016/lfsa000a16a_e.zip" \
-    if use_cartographic \
-    else "https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/files-fichiers/2016/lfsa000b16a_e.zip"
-
-    shp_fsa_all = download_zip_shp(zip_download_url,data_download_path).\
-        to_crs(4326)
-
-    shp_fsa_all_qc = shp_fsa_all.loc[shp_fsa_all.PRUID.astype('str') =="24", ]
- 
-    print(f"There are {shp_fsa_all_qc.shape[0]} FSAs in Quebec for the 2016 census")
-
-    return shp_fsa_all_qc
+        if year == 2021:
+            zip_download_url = "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/lda_000b21a_e.zip" \
+            if use_cartographic \
+            else "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/lda_000a21a_e.zip"
+        else:
+            raise ValueError(f"Fatal error - inputed {year}, but only 2021 implemented")
 
 
+        shp_das_all = download_zip_shp(zip_download_url,data_download_path)
+        shp_qc = download_qc_boundary(use_cartographic,data_download_path)
+        
+        num_qc_das= np.sum(shp_das_all.DAUID.str[:2] == pr_code)
+        shp_das_qc = gpd.sjoin(shp_das_all, shp_qc, how="inner", op="within" )
+
+        assert num_qc_das == shp_das_qc.shape[0], f"Error, there are {shp_das_qc.shape[0]} DAs found by spatial join but {num_qc_das} based on DAUID filtering"
+        print(f"There are {shp_das_qc.shape[0]} features/das in {pr_code} for the {year} census")
+
+        # Transform
+        if new_crs is not None:
+            shp_das_qc = shp_das_qc.to_crs(new_crs)
+
+        return shp_das_qc
+
+    return download_qc_das_wrappee(year,
+                                    path_cache_root,
+                                    use_cartographic,
+                                    new_crs)
+
+
+def download_fsas(year : int = 2016,
+                    pr_code : str = "24",
+                    path_cache_root: str=DATA_DIR,
+                    use_cartographic:bool = USE_CARTOGRAPHIC,
+                    data_download_path = DATA_DIR,
+                    new_crs=None)  -> gpd.GeoDataFrame:
+                        
+    @Cache_wrapper(path_cache=join(path_cache_root,f"qc_das_{year}_{pr_code}.parquet"))
+    def download_fsas_wrappee(year, 
+                                pr_code,
+                                 use_cartographic,
+                                 data_download_path,
+                                 new_crs  ) -> gpd.GeoDataFrame:
+        """
+        download_qc_boundary Read the 2016 FSAs for the province of Quebec
+
+        Args:
+            use_cartographic (bool): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        if year == 2016:
+            zip_download_url = "https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/files-fichiers/2016/lfsa000a16a_e.zip" \
+            if use_cartographic \
+            else "https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/files-fichiers/2016/lfsa000b16a_e.zip"
+        else:
+            raise ValueError(f"Fatal error - inputed {year}, but only 2016 implemented")
+
+        shp_fsa_all = download_zip_shp(zip_download_url, data_download_path)
+        shp_fsa_all_qc = shp_fsa_all.loc[shp_fsa_all.PRUID.astype('str') == pr_code, ]
+    
+        print(f"There are {shp_fsa_all_qc.shape[0]} FSAs in {pr_code} for the 2016 census")
+
+        # Transform
+        if new_crs is not None:
+            shp_fsa_all_qc = shp_fsa_all_qc.to_crs(new_crs)
+
+        return shp_fsa_all_qc
+
+    return download_fsas_wrappee(year, 
+                                pr_code,
+                                 use_cartographic,
+                                 data_download_path,
+                                 new_crs  ) 
 
 
 @Cache_wrapper(path_cache=join(DATA_DIR,"qc_city_fsa_2016.geojson"))
