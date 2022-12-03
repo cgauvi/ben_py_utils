@@ -2,7 +2,7 @@
 name = "ben-py-utils"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Charles Gauvin <you@example.com>"]
 readme = "README.md"
 packages = [{include = "ben_py_utils"}]
 
