@@ -1,6 +1,19 @@
 
-def download_zip_shp(url :str,
-                     data_download_path  :str = DEFAULT_DATA_DOWNLOAD_PATH ) -> gpd.GeoDataFrame :
+import geopandas as gpd
+from os.path import join, isfile, dirname
+from os import makedirs, remove
+from pathlib import Path
+
+import requests
+import zipfile
+
+from ben_py_utils.misc.constants import DATA_DIR
+
+DEFAULT_DATA_DOWNLOAD_PATH = DATA_DIR
+
+
+def download_zip_shp(url: str,
+                     data_download_path: str = DEFAULT_DATA_DOWNLOAD_PATH ) -> gpd.GeoDataFrame :
     """
     download_zip_shp Download a zipped shp file from a url + save results
 
@@ -14,8 +27,8 @@ def download_zip_shp(url :str,
         gpd.GeoDataFrame: geopandas df
     """
 
-    # e.g. extract ghy_000c11g_e from the following url
-    # 'https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/files-fichiers/ghy_000c11g_e.zip'
+    # e.g. extract lfsa000b16a_e from the following url
+    # 'https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/files-fichiers/2016/lfsa000b16a_e.zip'
     file_download = Path(url).stem
 
     ## Set the download path 
@@ -28,10 +41,10 @@ def download_zip_shp(url :str,
     if not isfile(path_data_dir_unzipped_shp):
         response= requests.get(url)
         makedirs(dirname(path_data_dir_unzipped),exist_ok=True)
-        with open(path_data_dir_zip, "wb", encoding='utf8', errors='ignore') as f:
+        with open(path_data_dir_zip, "wb") as f:
             f.write(response.content)
 
-        with zipfile.ZipFile(path_data_dir_zip, 'r', encoding='utf8' ) as zip_ref:
+        with zipfile.ZipFile(path_data_dir_zip, 'r') as zip_ref:
             zip_ref.extractall(path_data_dir_unzipped)
 
         remove(path_data_dir_zip)
