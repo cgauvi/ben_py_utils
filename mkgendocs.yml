@@ -1,7 +1,0 @@
-sources_dir: docs
-templates_dir: docs/templates
-repo: https://github.com/cgauvi/ben_py_utils.git
-version: master
-pages:
-  - page: "scripts/base/base.md"
-    source: "Python tips/base.py"
