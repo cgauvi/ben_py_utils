@@ -73,6 +73,7 @@ dependencies:
   - libedit=3.1.20191231=he28a2e2_2
   - libev=4.33=h516909a_1
   - libffi=3.4.2=h6a678d5_6
+  - libgcc=7.2.0=h69d50b8_2
   - libgcc-ng=12.2.0=h65d4601_19
   - libgdal=3.5.3=h9032eb1_7
   - libgfortran-ng=12.2.0=h69a702a_19
@@ -213,4 +214,4 @@ dependencies:
     - typing-extensions==4.4.0
     - watchdog==2.1.9
     - zipp==3.11.0
-prefix: /sidecar/home/charles.gauvin/anaconda3/envs/py_utils
+prefix: /home/charles/anaconda3/envs/ben_py_utils
