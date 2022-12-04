@@ -46,8 +46,6 @@ class Cache_wrapper:
     Arguments:
         path_cache (str), Default[None]
             Path of destination file with parquet extention 
-        is_geo (boolean), Default[False]
-            Try to save and read with geopandas? 
         pd_save_index (boolean), Default[False]
             Save pandas index?  
         force_overwrite (boolean), Default[False]
@@ -57,14 +55,12 @@ class Cache_wrapper:
 
     def __init__(self, 
                 path_cache,
-                is_geo = False, 
                 pd_save_index=False, 
                 force_overwrite=False):
 
         self.path_cache = path_cache
         self.pd_save_index = pd_save_index
         self.force_overwrite = force_overwrite
-        self.is_geo = is_geo
 
         # Make sure we save as parquet 
         # Not the same interface with and without parquet - using a more general data format is good, but adds to mnay flows to the code 
@@ -83,17 +79,15 @@ class Cache_wrapper:
         logger.info(f'Reading back {self.path_cache} ...')
  
 
-        if self.is_geo :
-            try:
-                df_result = gpd.read_parquet(self.path_cache)
-            except Exception as e:
-                logger.error(f"Fatal error trying to load back geo data from {self.path_cache} - {str(e)}")
-        else:
+        try:
+            df_result = gpd.read_parquet(self.path_cache)
+        except Exception as e:
+            logger.warning(f"Fatal error trying to load back geo data from {self.path_cache} - {str(e)} - trying with pandas")
             try:
                 df_result = pd.read_parquet(self.path_cache)
             except Exception as e:
-                logger.error(f"Fatal error trying to load back NON geo data from {self.path_cache} - {str(e)}")
-
+                raise e(f"Fatal error trying to load back NON geo data from {self.path_cache} - {str(e)}")
+                
         # Remove useless index if present and if we want to disregard indixes
         if 'Unnamed: 0' in df_result.columns and not self.pd_save_index:  
             df_result = df_result.drop(columns={'Unnamed: 0'})
