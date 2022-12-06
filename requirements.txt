@@ -17,7 +17,7 @@ pyopenssl
 pysocks
 pytest
 rtree
-sklearn
+scikit-learn
 typing
 unicodedata2
 xyzservices
