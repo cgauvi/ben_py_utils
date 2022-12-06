@@ -1,6 +1,6 @@
 
 <!-- badges: start -->
-[![pytest](https://github.com/cgauvi/ben_py_utils/actions/workflows/tests.yaml/badge.svg)](https://github.com/cgauvi/ben_py_utils/actions/workflowstests.yaml)
+[![pytest](https://github.com/cgauvi/ben_py_utils/actions/workflows/tests.yaml/badge.svg)](https://github.com/cgauvi/ben_py_utils/actions/workflows/tests.yaml)
 <!-- badges: end -->
 
 
