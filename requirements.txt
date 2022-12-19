@@ -21,7 +21,7 @@ pyopenssl==22.1.0
 pysocks==1.7.1
 pytest==7.2.0
 rtree==1.0.1
-sklearn==0.0.post1
+scikit-learn
 sphinx-autoapi==2.0.0
 sphinx-rtd-theme==1.1.1
 sphinxcontrib-napoleon==0.7
