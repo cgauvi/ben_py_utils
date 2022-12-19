@@ -1,0 +1,24 @@
+:py:mod:`constants`
+===================
+
+.. py:module:: constants
+
+
+Module Contents
+---------------
+
+.. py:data:: ROOT_PROJECT
+   
+
+   
+
+.. py:data:: DATA_DIR
+   
+
+   
+
+.. py:data:: DEFAULT_CACHE
+   
+
+   
+
