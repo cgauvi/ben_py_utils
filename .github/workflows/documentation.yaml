@@ -49,7 +49,7 @@ jobs:
         shell: bash -l {0}
 
       - run: |
-          makedocs build
+          mkdocs build
         shell: bash -l {0}
 
       - name: Deploy

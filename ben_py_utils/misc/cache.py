@@ -29,10 +29,12 @@ class Cache_wrapper:
 
     Can be used as such:
 
+    ```
     @Cache_wrapper(path_cache='bla/blo.parquet')
     def foo():
         pass
-
+    ```
+    
     Tries the following file formats in order and moves to next only in case of failure:
 
     1) .parquet
