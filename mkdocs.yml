@@ -2,7 +2,12 @@ site_name: ben_py_utils
 
 nav:
   - Home: index.md
-  - Documentation: references.md
+  - Documentation: 
+    - Misc:
+      - SSL: ssl.md
+      - Cache: cache.md
+      - Profiler: profiler.md
+      - Compose: compose.md
 
 docs_dir:
   site_build

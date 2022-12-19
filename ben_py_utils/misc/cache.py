@@ -1,12 +1,9 @@
  
+#Created on September 15 2021
+#@author: charles gauvin
+#Callable class used to cache long query results that can be used with the @wrapper syntax
 
-'''
-Created on September 15 2021
-@author: charles gauvin
-
-Callable class used to cache long query results that can be used with the @wrapper syntax
-
-'''
+ 
 
 import pandas as pd
 import geopandas as gpd
