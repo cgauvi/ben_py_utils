@@ -12,6 +12,13 @@ old_merge_environment_settings = requests.Session.merge_environment_settings
 
 @contextlib.contextmanager
 def no_ssl_verification():
+    """ Context manager that turns off ssl verification temporarily.
+
+    Example usage
+
+    with no_ssl_verification():
+        pass 
+    """
     opened_adapters = set()
 
     def merge_environment_settings(self, url, proxies, stream, verify, cert):

@@ -43,7 +43,7 @@ class Cache_wrapper:
     3) if Geodf, alternative geoformat (either shp or geojson )
 
 
-    Arguments:
+    Attributes:
         path_cache (str), Default[None]
             Path of destination file with parquet extention 
         pd_save_index (boolean), Default[False]
