@@ -13,5 +13,8 @@
 
 - Download and unzip files
 - Cache files 
+- Time functions
+- Run a function without SSL checking 
+- ...
 
  
