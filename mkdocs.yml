@@ -1,11 +1,18 @@
 site_name: ben_py_utils
 
 nav:
-  - index.md
-  - references.md
+  - Home: ../README.md
+  - Documentation: references.md
+
+docs_dir:
+  site_build
+
+site_dir:
+  docs
+
 
 plugins:
   - mkdocstrings
 
 theme:
-  name: "readthedocs"
+  name: readthedocs
