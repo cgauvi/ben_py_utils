@@ -1,0 +1,11 @@
+site_name: ben_py_utils
+
+nav:
+  - index.md
+  - references.md
+
+plugins:
+  - mkdocstrings
+
+theme:
+  name: "readthedocs"

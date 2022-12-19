@@ -1,0 +1,35 @@
+:py:mod:`ssl`
+=============
+
+.. py:module:: ssl
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   ssl.no_ssl_verification
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   ssl.old_merge_environment_settings
+
+
+.. py:data:: old_merge_environment_settings
+   
+
+   
+
+.. py:function:: no_ssl_verification()
+
+

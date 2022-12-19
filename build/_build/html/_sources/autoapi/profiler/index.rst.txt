@@ -1,0 +1,25 @@
+:py:mod:`profiler`
+==================
+
+.. py:module:: profiler
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   profiler.time_function
+
+
+
+.. py:function:: time_function(fun)
+
+   Basic decorator to time the execution of a function.
+
+
+
