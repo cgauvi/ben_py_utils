@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>Documentation - ben_py_utils</title>
+    <title>Cache - ben_py_utils</title>
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Documentation";
-        var mkdocs_page_input_path = "references.md";
+        var mkdocs_page_name = "Cache";
+        var mkdocs_page_input_path = "cache.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -45,11 +45,22 @@
                 <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
                 </li>
               </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="references.html">Documentation</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Misc</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="ssl.html">SSL</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="cache.html">Cache</a>
     <ul class="current">
     </ul>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="compose.html">Compose</a>
+                </li>
+    </ul>
+                  </li>
               </ul>
       </div>
     </div>
@@ -65,7 +76,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html" class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Documentation</li>
+          <li>Documentation &raquo;</li>
+          <li>Misc &raquo;</li>
+      <li>Cache</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -74,21 +87,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>This part of the project documentation focuses on
-an <strong>information-oriented</strong> approach. Use it as a
-reference for the technical implementation of the
-<code>calculator</code> project code.</p>
-
-
-<div class="doc doc-object doc-module">
+                <div class="doc doc-object doc-module">
 
 
 <a id="ben_py_utils.misc.cache"></a>
   <div class="doc doc-contents first">
-  
-      <p>Created on September 15 2021
-@author: charles gauvin</p>
-<p>Callable class used to cache long query results that can be used with the @wrapper syntax</p>
 
   
 
@@ -128,7 +131,10 @@ def foo():
 
         <details class="quote">
           <summary>Source code in <code>ben_py_utils/misc/cache.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 29</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
 <span class="normal"> 30</span>
 <span class="normal"> 31</span>
 <span class="normal"> 32</span>
@@ -239,10 +245,7 @@ def foo():
 <span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Cache_wrapper</span><span class="p">:</span>
+<span class="normal">140</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Cache_wrapper</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;Semi fancy wrapper implemented as callable class that caches results to a parquet file.</span>
 
@@ -388,307 +391,12 @@ def foo():
   </div>
 
 </div>
-
-<div class="doc doc-object doc-module">
-
-
-<a id="ben_py_utils.misc.profiler"></a>
-  <div class="doc doc-contents first">
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="ben_py_utils.misc.profiler.time_function" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">time_function</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Basic decorator to time the execution of a function.</p>
-
-      <details class="quote">
-        <summary>Source code in <code>ben_py_utils/misc/profiler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">time_function</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Basic decorator to time the execution of a function.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nd">@wraps</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">inner_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">kws</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Basic decorator to time the execution of a function.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            *kws, **kwargs</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            result, time of execution (tuple): result of fun(*kws, **kwargs) + time to run</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> 
-        <span class="n">results</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="o">*</span><span class="n">kws</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> 
-
-        <span class="k">return</span> <span class="n">results</span><span class="p">,</span> <span class="n">end</span><span class="o">-</span><span class="n">start</span>
-
-    <span class="k">return</span> <span class="n">inner_wrapper</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-
-
-  </div>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-module">
-
-
-<a id="ben_py_utils.misc.ssl"></a>
-  <div class="doc doc-contents first">
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="ben_py_utils.misc.ssl.no_ssl_verification" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">no_ssl_verification</span><span class="p">()</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Context manager that turns off ssl verification temporarily.</p>
-<p>Example usage</p>
-<p>with no_ssl_verification():
-    pass</p>
-
-      <details class="quote">
-        <summary>Source code in <code>ben_py_utils/misc/ssl.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
-<span class="k">def</span> <span class="nf">no_ssl_verification</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot; Context manager that turns off ssl verification temporarily.</span>
-
-<span class="sd">    Example usage</span>
-
-<span class="sd">    with no_ssl_verification():</span>
-<span class="sd">        pass </span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">opened_adapters</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">merge_environment_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">proxies</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">verify</span><span class="p">,</span> <span class="n">cert</span><span class="p">):</span>
-        <span class="c1"># Verification happens only once per connection so we need to close</span>
-        <span class="c1"># all the opened adapters once we&#39;re done. Otherwise, the effects of</span>
-        <span class="c1"># verify=False persist beyond the end of this context manager.</span>
-        <span class="n">opened_adapters</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_adapter</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
-
-        <span class="n">settings</span> <span class="o">=</span> <span class="n">old_merge_environment_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">proxies</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">verify</span><span class="p">,</span> <span class="n">cert</span><span class="p">)</span>
-        <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;verify&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-
-        <span class="k">return</span> <span class="n">settings</span>
-
-    <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="o">.</span><span class="n">merge_environment_settings</span> <span class="o">=</span> <span class="n">merge_environment_settings</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">InsecureRequestWarning</span><span class="p">)</span>
-            <span class="k">yield</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="o">.</span><span class="n">merge_environment_settings</span> <span class="o">=</span> <span class="n">old_merge_environment_settings</span>
-
-        <span class="k">for</span> <span class="n">adapter</span> <span class="ow">in</span> <span class="n">opened_adapters</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">adapter</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="k">pass</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-
-
-  </div>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-module">
-
-
-<a id="ben_py_utils.misc.profiler"></a>
-  <div class="doc doc-contents first">
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="ben_py_utils.misc.profiler.time_function" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">time_function</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Basic decorator to time the execution of a function.</p>
-
-      <details class="quote">
-        <summary>Source code in <code>ben_py_utils/misc/profiler.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">time_function</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Basic decorator to time the execution of a function.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nd">@wraps</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">inner_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">kws</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Basic decorator to time the execution of a function.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            *kws, **kwargs</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            result, time of execution (tuple): result of fun(*kws, **kwargs) + time to run</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> 
-        <span class="n">results</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="o">*</span><span class="n">kws</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> 
-
-        <span class="k">return</span> <span class="n">results</span><span class="p">,</span> <span class="n">end</span><span class="o">-</span><span class="n">start</span>
-
-    <span class="k">return</span> <span class="n">inner_wrapper</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-
-
-  </div>
-
-  </div>
-
-</div>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="index.html" class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="ssl.html" class="btn btn-neutral float-left" title="SSL"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="profiler.html" class="btn btn-neutral float-right" title="Profiler">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -711,8 +419,10 @@ def foo():
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="index.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="ssl.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="profiler.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

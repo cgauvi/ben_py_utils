@@ -1,1 +1,1 @@
-::: ben_py_utils.misc.compose.md
+::: ben_py_utils.misc.compose
