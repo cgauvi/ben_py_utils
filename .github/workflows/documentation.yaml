@@ -43,12 +43,14 @@ jobs:
         run: |
           conda create --name ben_py_utils python=${{ matrix.python-version }} geopandas 
           conda activate ben_py_utils
-          conda install -c conda-forge mkdocs
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install mkdocs
         shell: bash -l {0}
 
-      - run: |
+      - name: Build docs with mkdocs
+        run: |
+          conda activate ben_py_utils
           python -m mkdocs build
         shell: bash -l {0}
 
