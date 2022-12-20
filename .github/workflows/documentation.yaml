@@ -54,8 +54,18 @@ jobs:
           python -m mkdocs build
         shell: bash -l {0}
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Github credentials 
+          run: |
+            git config --local user.email "actions@github.com"
+            git config --local user.name "GitHub Actions"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update package documentation
+          title: 'Package documentation'
+          body: >
+            This PR is auto-generated. Make sure all
+            your changes are reflected in `docs/`
+          labels: documentation, automated pr
