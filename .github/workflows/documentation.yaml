@@ -55,7 +55,7 @@ jobs:
         shell: bash -l {0}
 
       - name: Github credentials 
-          run: |
+        run: |
             git config --local user.email "actions@github.com"
             git config --local user.name "GitHub Actions"
 
