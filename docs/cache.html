@@ -120,9 +120,10 @@
   
       <p>Semi fancy wrapper implemented as callable class that caches results to a parquet file.</p>
 <p>Can be used as such:</p>
-<p>@Cache_wrapper(path_cache='bla/blo.parquet')
+<pre><code>@Cache_wrapper(path_cache='bla/blo.parquet')
 def foo():
-    pass</p>
+    pass
+</code></pre>
 <p>Tries the following file formats in order and moves to next only in case of failure:</p>
 <p>1) .parquet
 2) extension considered in name (e.g. csv or geojson if path_cache = 'bla.csv')
@@ -245,15 +246,19 @@ def foo():
 <span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
-<span class="normal">140</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Cache_wrapper</span><span class="p">:</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Cache_wrapper</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;Semi fancy wrapper implemented as callable class that caches results to a parquet file.</span>
 
 <span class="sd">    Can be used as such:</span>
 
+<span class="sd">    ```</span>
 <span class="sd">    @Cache_wrapper(path_cache=&#39;bla/blo.parquet&#39;)</span>
 <span class="sd">    def foo():</span>
 <span class="sd">        pass</span>
+<span class="sd">    ```</span>
 
 <span class="sd">    Tries the following file formats in order and moves to next only in case of failure:</span>
 
