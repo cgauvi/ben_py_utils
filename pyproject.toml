@@ -6,7 +6,7 @@ authors = ["Charles Gauvin"]
 readme = "README.md"
 packages = [
     {include = "ben_py_utils"},
-    {include = "ben_py_utils/**/*.py"}
+    {include = "ben_py_utils/misc"} 
 ]
 
 [tool.poetry.dependencies]
