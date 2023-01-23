@@ -9,11 +9,11 @@ on:
 
 
 jobs:
+  tests:
+    if: ${{ contains(github.ref_name, 'create-pull-request/patch') }} == 'false' && github.actor != 'github-actions'
 
-  if: ${{ contains(github.ref_name, 'create-pull-request/patch') }} == 'false' && github.actor != 'github-actions'
-  
-  build:
     runs-on: ${{ matrix.os }}
+
     strategy:
       matrix:
         os: [ubuntu-latest]
