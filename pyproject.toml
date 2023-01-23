@@ -1,13 +1,10 @@
 [tool.poetry]
-name = "ben-py-utils"
+name = "ben_py_utils"
 version = "0.1.0"
 description = ""
 authors = ["Charles Gauvin"]
 readme = "README.md"
-packages = [
-    {include = "ben_py_utils"},
-    {include = "ben_py_utils/misc"} 
-]
+
 
 [tool.poetry.dependencies]
 python = "^3.9"
