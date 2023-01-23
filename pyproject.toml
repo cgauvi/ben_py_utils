@@ -4,11 +4,39 @@ version = "0.1.0"
 description = ""
 authors = ["Charles Gauvin"]
 readme = "README.md"
-packages = [{include = "ben_py_utils"}]
+packages = [
+    {include = "ben_py_utils"},
+    {include = "ben_py_utils.misc"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-
+autoflake = "*"
+black = "*"
+brotlipy = "*"
+fixtures = "*"
+flake8 = "*"
+folium = "*"
+gendocs = "*"
+mapclassify = "*"
+matplotlib = "*"
+mkdocs-section-index = "*"
+mkdocstrings-python = "*"
+munkres = "*"
+myst-nb = "*"
+pathlib = "*"
+pelican = "*"
+pip-chill = "*"
+pyarrow = "*"
+pylint = "*"
+pyopenssl = "*"
+pysocks = "*"
+pytest = "*"
+sphinx-autoapi = "*"
+sphinx-rtd-theme = "*"
+sphinxcontrib-napoleon = "*"
+typing = "*"
+unicodedata2 = "*"
 
 [build-system]
 requires = ["poetry-core"]
