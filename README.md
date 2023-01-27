@@ -20,3 +20,14 @@
  ## Notes
 
  There is a github action to automatically generate the documentation by calling `mkdocs build` and pushing to a git-hub-pages branch. Otherwise, the documentation can be built manually, committed and pushed. The repo builds the pages using the `docs` folder so make sure that is the repo with the `index.html` file. See the `mkdocs.yml` file for details
+
+
+ # Installation
+
+ Use conda to facilitate use of geopandas and all the spatial libs
+
+ ```bash
+conda create -y -n ben_py_utils python=3.9 geopandas 
+conda activate ben_py_utils
+pip install -r requirements.txt 
+ ```
