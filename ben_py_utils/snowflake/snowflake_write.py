@@ -71,6 +71,17 @@ class Gpd_Sfkl_writer(Abstract_Sfkl_writer):
 
         super.__init__(conn) 
 
+    def write_gpd_to_file(self):
+        
+        cmd = " ogr2ogr -f CSV " \
+       f" {join(os.getcwd(), 'shp_valid.csv')}" \
+       f" {join(os.getcwd(), 'shp_valid', 'shp_valid.shp')}" \
+       " -lco GEOMETRY=AS_WKT" \
+       " -lco SEPARATOR=TAB " \
+       " -lco GEOMETRY_NAME=geometry "\
+       " -lco CREATE_CSVT=YES "\
+       " -lco STRING_QUOTING=ALWAYS "
+
     
 
     def gpd_to_sfkl(conn:SnowflakeConnection, ):
