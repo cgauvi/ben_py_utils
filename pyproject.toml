@@ -10,23 +10,23 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
   
-  
+
 [tool.poetry.dependencies]
 python = "^3.9"
-brotlipy = "*"
-munkres = "*"
-myst-nb = "*"
-pathlib = "*"
-pyarrow = "*"
-pyopenssl = "*"
-pysocks = "*"
-typing = "*"
-unicodedata2 = "*"
+brotlipy = "^0.7.0"
+munkres = "^1.1.4"
+myst-nb = "^0.17.1"
+pathlib = "^1.0.1"
+pyarrow = "^11.0.0"
+pyopenssl = "^23.0.0"
+pysocks = "^1.7.1"
+typing = "^3.7.4"
+unicodedata2 = "^15.0.0"
 folium = {version = "*", optional = true}
 gendocs = {version = "*", optional = true}
 mapclassify = {version = "*", optional = true}
 matplotlib = {version = "*", optional = true}
-pytest = {version = "*", optional = true} 
+ 
 
 [tool.poetry.group.notebooks.dependencies]
 matplotlib= "*"
@@ -39,7 +39,12 @@ xyzservices= "*"
 [tool.poetry.group.docs.dependencies]
 gendocs= "*"
 
-[tool.poetry.group.test.dependencies]
-pytest = "*"
+[tool.poetry.extras]
+docs=['gendocs']
+notebooks=["seaborn" , "matplotlib", "folium", "mapclassify", "contextily", "xyzservices"]
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "*"
 
 
