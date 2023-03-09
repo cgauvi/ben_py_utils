@@ -250,7 +250,7 @@ def foo():
 <span class="normal">141</span>
 <span class="normal">142</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Cache_wrapper</span><span class="p">:</span>
 
-    <span class="sd">&quot;&quot;&quot;Semi fancy wrapper implemented as callable class that caches results to a parquet file.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Semi fancy wrapper implemented as callable class that caches results to a parquet file.</span>
 
 <span class="sd">    Can be used as such:</span>
 
@@ -294,7 +294,7 @@ def foo():
 
 
     <span class="k">def</span> <span class="nf">_read_existing_file</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Try to read back an existing file from cache</span>
 
 <span class="sd">        Returns:</span>
@@ -321,7 +321,7 @@ def foo():
 
 
     <span class="k">def</span> <span class="nf">_create_new_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fun</span><span class="p">,</span> <span class="o">*</span><span class="n">kws</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">]</span> <span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Run fun(*kws, **kwargs) and cache the results</span>
 
 <span class="sd">        Args:</span>

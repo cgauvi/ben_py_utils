@@ -128,7 +128,7 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">apply_n_times</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kws</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Apply a function n times</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Apply a function n times</span>
 <span class="sd">	&#39;&#39;&#39;</span>
 
     <span class="n">fun_power_n</span> <span class="o">=</span> <span class="p">[</span><span class="n">fun</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
@@ -165,7 +165,7 @@ https://www.geeksforgeeks.org/function-composition-in-python/#:~:text=Function%2
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">composite_function</span><span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39; Compose a function</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39; Compose a function</span>
 <span class="sd">    https://www.geeksforgeeks.org/function-composition-in-python/#:~:text=Function%20composition%20is%20the%20way,second%20function%20and%20so%20on.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">compose</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
@@ -204,7 +204,7 @@ https://www.geeksforgeeks.org/function-composition-in-python/#:~:text=Function%2
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">move_up_n_time</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39; Move up n times in a directory, starting at path</span>
+<span class="w">	</span><span class="sd">&#39;&#39;&#39; Move up n times in a directory, starting at path</span>
 <span class="sd">	&#39;&#39;&#39;</span>
 	<span class="n">new_dir</span> <span class="o">=</span> <span class="n">apply_n_times</span><span class="p">(</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
 
