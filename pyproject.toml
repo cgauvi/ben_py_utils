@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ben_py_utils"
-version = "0.2.0"
+version = "0.2.1"
 description = ""
 authors = ["Charles Gauvin"]
 readme = "README.md"
@@ -10,7 +10,6 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
   
-
 [tool.poetry.dependencies]
 python = "^3.9"
 brotlipy = "^0.7.0"
@@ -22,29 +21,18 @@ pyopenssl = "^23.0.0"
 pysocks = "^1.7.1"
 typing = "^3.7.4"
 unicodedata2 = "^15.0.0"
-folium = {version = "*", optional = true}
-gendocs = {version = "*", optional = true}
-mapclassify = {version = "*", optional = true}
-matplotlib = {version = "*", optional = true}
- 
-
-[tool.poetry.group.notebooks.dependencies]
-matplotlib= "*"
-seaborn= "*"
-folium= "*"
-mapclassify= "*"
-contextily= "*"
-xyzservices= "*"
-
-[tool.poetry.group.docs.dependencies]
-gendocs= "*"
+seaborn = {version ="^0.12.1", optional = true}
+matplotlib = {version ="^3.6.2", optional = true}
+folium = {version ="^0.13.0", optional = true}
+mapclassify = {version ="^2.4.3", optional = true}
+contextily = {version ="^1.3.0", optional = true}
+xyzservices = {version ="^2022.9.0", optional = true}
+pytest = {version = "^5.2", optional = true}
+flake8 = {version = "^6.0.0", optional = true}
+gendocs= {version = "^0.4.0", optional = true}
 
 [tool.poetry.extras]
 docs=['gendocs']
 notebooks=["seaborn" , "matplotlib", "folium", "mapclassify", "contextily", "xyzservices"]
-
-[tool.poetry.dev-dependencies]
-pytest = "^5.2"
-flake8 = "*"
-
+dev=['pytest','flake8']
 
